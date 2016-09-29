@@ -6,30 +6,37 @@
 		<servlet-class>
 			com.sun.jersey.spi.container.servlet.ServletContainer
 		</servlet-class>
-		<!-- <init-param>
-			<param-name>com.sun.jersey.config.property.packages</param-name>
-			<param-value>com.example.petsupplies.core.service.impl</param-value>
-		</init-param> -->
+		<!-- <init-param> <param-name>com.sun.jersey.config.property.packages</param-name> 
+			<param-value>com.example.petsupplies.core.service.impl</param-value> </init-param> -->
 		<init-param>
 			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
 			<param-value>true</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<filter>
+		<filter-name>cors</filter-name>
+		<filter-class>com.example.petsupplies.filters.ResponseFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>cors</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<servlet-mapping>
 		<servlet-name>jersey-serlvet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 	<context-param>
-        <param-name>resteasy.scan</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <param-name>resteasy.scan.providers</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <param-name>resteasy.scan.resources</param-name>
-        <param-value>false</param-value>
-    </context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.scan.providers</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.scan.resources</param-name>
+		<param-value>false</param-value>
+	</context-param>
 </web-app>
